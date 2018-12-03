@@ -2,6 +2,8 @@ const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const srcDir = resolve(__dirname, 'src')
+const webpack = require('webpack')
+// TODO: mini-css-extract-plugin쓰기
 
 module.exports = {
   mode: 'development',
@@ -21,7 +23,16 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.css$/,
-      loader: 'css-loader',
+      use: [{
+        loader: 'style-loader'
+      }, {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          localIdentName: '[name]-[local]-[hash:base64:6]', // 클레스 이름을 좀더 쉽게 보게함
+          camelCase: true
+        }
+      }],
       exclude: /node_moduels/
     }]
   },
@@ -31,4 +42,16 @@ module.exports = {
     }),
     new DashboardPlugin()
   ]
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.OptimizeCSSAssetsPlugin({})
+  ])
 }
