@@ -1,0 +1,38 @@
+.header {
+    background: linear-gradient(to right, purple, yellow)
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: var(--site-width);
+    margin: 0 auto;
+}
+
+.title {
+    color: white;
+    text-transform: uppercase;
+    font-style: italic;
+    padding: 1rem 0;
+    font-size: 3.5rem;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.list-item {
+
+}
+
+.link {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
+.link:focus {color:blueviolet}

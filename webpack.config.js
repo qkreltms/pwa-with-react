@@ -9,7 +9,11 @@ module.exports = {
   mode: 'development',
   entry: `${srcDir}/index.js`,
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  devServer: {
+    historyApiFallback: true
   },
   module: {
     rules: [{

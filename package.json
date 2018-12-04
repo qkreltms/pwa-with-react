@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "react-router-dom": "^4.3.1",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.0.1"
   }
