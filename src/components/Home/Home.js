@@ -1,10 +1,11 @@
 import React from 'react'
 import Post from '../Post/Post'
-import posts from '../../blog-posts.json'
 
-const Home = () => {
+const Home = ({ posts }) => {
   return (
-    posts.posts.map(post => <Post {...post} key={post.slug} />)
+    posts.length
+      ? posts.map(post => <Post {...post} key={post.slug} />)
+      : <p> Please Wait...</p>
   )
 }
 

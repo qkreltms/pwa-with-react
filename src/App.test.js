@@ -1,5 +1,4 @@
-import { test, expect } from 'jest'
-
+/* eslint-env jest */
 test('sample', () => {
   expect(true)
 })

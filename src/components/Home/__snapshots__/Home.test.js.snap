@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About component should render as expected 1`] = `
+<Post
+  content="c1"
+  excerpt="e1"
+  key="s1"
+  slug="s1"
+  title="t1"
+/>
+`;
+
+exports[`About component should render as expected 2`] = `
+<p>
+   Please Wait...
+</p>
+`;

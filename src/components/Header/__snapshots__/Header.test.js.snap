@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About component should render as expected 1`] = `
+<header
+  className="header"
+>
+  <div
+    className="container"
+  >
+    <h1
+      className="title"
+    >
+      Aletta
+    </h1>
+    <nav>
+      <ul
+        className="list"
+      >
+        <li
+          className="listItem"
+        >
+          <Link
+            className="link"
+            replace={false}
+            to="/"
+          >
+            Posts
+          </Link>
+        </li>
+        <li
+          className="listItem"
+        >
+          <Link
+            className="link"
+            replace={false}
+            to="/about"
+          >
+            About
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+`;
