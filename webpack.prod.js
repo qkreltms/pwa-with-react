@@ -2,6 +2,7 @@ const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   context: resolve(__dirname, 'src'),
@@ -28,16 +29,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.css$/,
-      use: [{
-        loader: 'style-loader'
-      }, {
-        loader: 'css-loader',
-        options: {
-          modules: true,
-          localIdentName: '[name]-[local]-[hash:base64:6]', // 클레스 이름을 좀더 쉽게 보게함
-          camelCase: true
-        }
-      }],
+      use: ExtractTextPlugin.extract(['css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]",camelCase']),
       exclude: /node_moduels/
     }]
   },
@@ -50,6 +42,7 @@ module.exports = {
       template: `./index.html`
     }),
     new UglifyJSPlugin(),
-    new CleanWebpackPlugin(['dist'])
+    new CleanWebpackPlugin(['dist']),
+    new ExtractTextPlugin('styles.[chunkhash:6].css')
   ]
 }
