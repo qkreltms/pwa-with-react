@@ -1,14 +1,16 @@
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
-const srcDir = resolve(__dirname, 'src')
-// TODO: mini-css-extract-plugin쓰기
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
+  context: resolve(__dirname, 'src'),
   mode: 'development',
-  entry: `${srcDir}/index.js`,
+  entry: {
+    app: `./index.js`
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash:6].js',
     publicPath: '/'
   },
   devServer: {
@@ -39,10 +41,15 @@ module.exports = {
       exclude: /node_moduels/
     }]
   },
+  devtool: 'source-map',
+  performance: {
+    hints: 'error'
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: `${srcDir}/index.html`
+      template: `./index.html`
     }),
-    new DashboardPlugin()
+    new UglifyJSPlugin(),
+    new CleanWebpackPlugin(['dist'])
   ]
 }
