@@ -3,14 +3,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
 
 module.exports = {
-  context: resolve(__dirname, 'src'),
+  context: resolve(__dirname, '../src'),
   mode: 'development',
   entry: {
     app: `./index.js`
   },
   output: {
+    path: resolve(__dirname, '../dist'),
     filename: '[name].[chunkhash:6].js',
     publicPath: '/'
   },
@@ -37,12 +39,21 @@ module.exports = {
   performance: {
     hints: 'error'
   },
+  resolve: {
+    alias: {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: `./index.html`
     }),
     new UglifyJSPlugin(),
-    new CleanWebpackPlugin(['dist']),
-    new ExtractTextPlugin('styles.[chunkhash:6].css')
+    new CleanWebpackPlugin(['dist'], {
+      root: resolve(__dirname, '..')
+    }),
+    new ExtractTextPlugin('styles.[chunkhash:6].css'),
+    new OfflinePlugin()
   ]
 }

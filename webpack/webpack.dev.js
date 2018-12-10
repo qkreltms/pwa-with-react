@@ -1,7 +1,7 @@
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
-const srcDir = resolve(__dirname, 'src')
+const srcDir = resolve(__dirname, '../src')
 // TODO: mini-css-extract-plugin쓰기
 
 module.exports = {
@@ -13,6 +13,12 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true
+  },
+  resolve: {
+    alias: {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
   },
   module: {
     rules: [{
