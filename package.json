@@ -4,7 +4,7 @@
     "deploy": "surge --project dist --domain https://mybloooooog.surge.sh",
     "dev": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server",
     "start": "webpack",
-    "build": "webpack --config=webpack.prod.js -p",
+    "build": "webpack --config=webpack/webpack.prod.js -p",
     "test": "jest",
     "testCoverage": "jest --coverage",
     "testUpdate": "jest -u"
@@ -29,6 +29,8 @@
     "mini-css-extract-plugin": "^0.4.5",
     "normalize.css": "^8.0.1",
     "offline-plugin": "^5.0.6",
+    "preact": "^8.4.2",
+    "preact-compat": "^3.18.4",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-test-renderer": "^16.6.3",
