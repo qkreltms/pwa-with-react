@@ -3,10 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
 
 module.exports = {
   context: resolve(__dirname, 'src'),
-  mode: 'development',
   entry: {
     app: `./index.js`
   },
@@ -43,6 +43,7 @@ module.exports = {
     }),
     new UglifyJSPlugin(),
     new CleanWebpackPlugin(['dist']),
-    new ExtractTextPlugin('styles.[chunkhash:6].css')
+    new ExtractTextPlugin('styles.[chunkhash:6].css'),
+    new OfflinePlugin()
   ]
 }

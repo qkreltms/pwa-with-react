@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Aletta</h1>
+        <h1 className={styles.title}>Blog</h1>
         <nav>
           <ul className={styles.list}>
             <li className={styles.listItem}><Link className={styles.link} to='/'>Posts</Link></li>
